@@ -1,8 +1,7 @@
 {
   "name": "nest-typeorm",
   "version": "0.0.1",
-  "description": "",
-  "author": "",
+  "author": "Federico Aloi",
   "license": "MIT",
   "scripts": {
     "prebuild": "rimraf dist",
