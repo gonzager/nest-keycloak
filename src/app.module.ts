@@ -4,12 +4,13 @@ import { AppService } from './app.service';
 import { DatabaseModule } from './database/database.module';
 import { ContactosModule } from './contactos/contactos.module';
 import { ConfigModule } from '@nestjs/config';
-import configuration from './config/configuration';
+import databaseConfig from './config/database.config';
+import serverConfig from './config/server.config';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
-      load: [configuration],
+      load: [serverConfig, databaseConfig],
       isGlobal: true,
     }),
     DatabaseModule,
