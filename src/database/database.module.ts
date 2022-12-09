@@ -9,7 +9,6 @@ import databaseConfig from 'src/config/database.config';
       inject: [databaseConfig.KEY],
       useFactory(dbConfig: ConfigType<typeof databaseConfig>) {
         return {
-          type: 'postgres',
           synchronize: true,
           autoLoadEntities: true,
           ...dbConfig,
