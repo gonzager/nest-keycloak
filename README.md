@@ -56,7 +56,7 @@ Breve descripción de qué se puede encontrar en cada uno de los directorios del
 ├── src
 │   ├── common          # Componentes comunes - guardas, filtros, interceptores, etc
 │   ├── config          # Configuraciones de la API (base de datos, puerto, etc)
-│   ├── contactos
+│   ├── resources       # Endpoints y modelos de la aplicación
 │   └── database
 │      ├── migrations   # Migraciones de la base de datos
 │      └── seeders      # Datos de prueba para la base de datos
