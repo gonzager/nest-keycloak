@@ -1,3 +1,8 @@
+import { ConfigModule } from '@nestjs/config';
+
+// Forzamos la carga del archivo .env antes de leer las variables de entorno.
+ConfigModule.forRoot({});
+
 const typeOrmConfig = {
   type: 'postgres',
   host: process.env.DATABASE_HOST || 'localhost',
