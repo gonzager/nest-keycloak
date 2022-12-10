@@ -10,8 +10,8 @@ const typeOrmConfig = {
   host: process.env.DATABASE_HOST || 'localhost',
   port: parseInt(process.env.DATABASE_PORT, 10) || 5432,
   username: process.env.DATABASE_USERNAME || 'postgres',
-  password: process.env.DATABASE_PASSWORD || 'postgres',
-  database: process.env.DATABASE_NAME || `magistrades-${environment}`,
+  password: process.env.DATABASE_PASSWORD || 'admin1234',
+  database: process.env.DATABASE_NAME || `contactos_${environment}`,
 };
 
 export default typeOrmConfig;
