@@ -1,6 +1,6 @@
 import { join } from 'path';
 import { DataSource } from 'typeorm';
-import typeOrmConfig from './typeOrm.config';
+import typeOrmConfig from '../config/typeOrm.config';
 
 const dataSource = new DataSource({
   ...typeOrmConfig,
