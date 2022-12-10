@@ -10,6 +10,7 @@ export class CreateContactosTable1670545537435 implements MigrationInterface {
             name: 'id',
             type: 'int',
             isPrimary: true,
+            isGenerated: true,
           },
           {
             name: 'nombre',
