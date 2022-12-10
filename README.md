@@ -1,73 +1,117 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# Repositorio semilla: API TypeScript + NestJS + TypeORM :seedling:
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+¡Bienvenida/o! En este repositorio encontrarás una plantilla (de las infinitas posibles) para crear una API utilizando NodeJS y TypeScript. Las principales tecnologías que utilizamos son:
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+- [NodeJS](https://nodejs.org/es/): entorno de ejecución para JavaScript.
+- [NestJS](https://nestjs.com/): framework para crear aplicaciones web.
+- [TypeORM](https://typeorm.io/): ORM (object-relational mapping) para interactuar con una base SQL desde objetos JavaScript.
+- [PostgreSQL](https://www.postgresql.org/): base de datos SQL.
+- [Jest](https://jestjs.io/): framework para escribir tests.
 
-## Description
+Para crear un proyecto siguiendo esta plantilla, lo único que tenés que hacer es clickear en el botón que dice `Use this template`. ¡Y no te olvides de cambiarle el nombre en el `package.json`!
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+## :point_up: Prerrequisitos - para instalar antes de empezar
 
-## Installation
+Vas a necesitar un IDE o al menos un editor de texto que coloree la sintaxis. Recomendamos utilizar [Visual Studio Code](https://code.visualstudio.com/) - que se lleva muy bien con proyectos TypeScript - enriquecido con los siguientes plugins:
 
-```bash
-$ npm install
+- [ESlint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
+- [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
+- [Jest](https://marketplace.visualstudio.com/items?itemName=Orta.vscode-jest)
+
+Para ejecutar el código es necesario tener NodeJS en su versión 18 (`lts/hydrogen`). Para instalarlo recomendamos utilizar el manejador de versiones [`nvm`](https://github.com/nvm-sh/nvm), aunque también podés hacerlo manualmente siguiendo las instrucciones adecuadas para tu sistema operativo.
+
+Por último, se incluye un archivo de [Docker Compose](https://docs.docker.com/compose/) con todo lo necesario para instalar y configurar las bases de datos en PostgreSQL (una para desarrollo y otra para test). Si por algún motivo no querés usar Docker, vas a tener que instalar PostgreSQL y luego ejecutar el script `docker/init/crear-db.sh` en tu entorno.
+
+## :ballot_box_with_check: Configuración inicial del proyecto
+
+Asumiendo que ya configuraste todos los prerrequisitos y que vas a utilizar Docker, estos son los comandos que deberías ejecutar la primera vez que trabajes en el proyecto:
+
+```shell
+# Instala, configura y levanta las bases de datos.
+# El flag -d (daemon) hace que la ejecución continue incluso luego de reiniciar la máquina.
+docker-compose up -d
+
+# Instala las dependencias Node del proyecto.
+npm install
+
+# Ejecuta las migraciones iniciales para las bases de dev y test.
+npm run db:migrate
+NODE_ENV=test npm run db:migrate
 ```
 
-## Running the app
+De manera opcional, también podés cargar unos datos de prueba, llamados _seeders_, que vienen incluidos. A medida que el desarrollo continue, se podrían seguir agregando más datos que ayuden en las pruebas manuales. Para cargar los _seeders_, ejecutar el siguiente comando:
 
-```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+```shell
+# (Opcional) Carga los datos de prueba en la base de desarrollo.
+npm run db:seed
 ```
 
-## Test
+## :file_folder: Estructura de directorios
 
-```bash
-# unit tests
-$ npm run test
+Breve descripción de qué se puede encontrar en cada uno de los directorios del proyecto:
 
-# e2e tests
-$ npm run test:e2e
+```shell
+.
+├── docker              # Configuración de Docker para desarrollo
+├── src
+│   ├── common
+│   ├── config          # Configuraciones de la API (base de datos, puerto, etc)
+│   ├── contactos
+│   └── database
+└── test
 
-# test coverage
-$ npm run test:cov
+├── bin                 # Punto de entrada del servidor
+├── db
+│   ├── migrations      # Migraciones de la base de datos
+│   └── seeders         # Datos de prueba para la base de datos
+├── docker              # Configuración de Docker para desarrollo
+├── lib
+│   ├── config          # Configuración de la base de datos
+│   ├── controllers     # Acciones de nuestra aplicación
+│   ├── models          # Definición de modelos, atributos, etc
+│   └── routes          # Rutas de la API
+└── test                # Utilidades para escribir tests
 ```
 
-## Support
+## :woman_technologist: :man_technologist: Comandos útiles para el día a día
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+A continuación, algunos comandos necesarios para el desarrollo diario en este proyecto.
 
-## Stay in touch
+### Código
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+```shell
+# Levanta el proyecto y recarga automáticamente si hay cambios.
+npm start
 
-## License
+# Ejecuta los tests una sola vez.
+npm test
 
-Nest is [MIT licensed](LICENSE).
+# Ejecuta los tests y se queda esperando por cambios.
+npm test:watch
+
+# Ejecuta los tests de integración (e2e).
+npm test:e2e
+```
+
+### Base de datos
+
+```shell
+# Ejecuta las migraciones.
+npm run db:migrate
+
+# Carga los datos de prueba.
+npm run db:seed
+
+# Genera automáticamente una migración a partir de los cambios en los modelos.
+# NOTA: es recomendable generar una migración por cada cambio, lo más granulares posibles.
+npm run migration:generate src/database/migrations/AddCorreoElectronicoToContacto
+
+# Crea una migración vacía para completar manualmente.
+npm run migration:create src/database/migrations/CreateUsuario
+
+# Deshace la última migración ejecutada.
+npm run migration:revert
+
+# Muestra cuáles migraciones fueron ejecutadas y cuáles no.
+npm run migration:show
+```
