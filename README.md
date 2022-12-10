@@ -93,6 +93,22 @@ npm test:watch
 npm test:e2e
 ```
 
+### NestJS
+
+Para no tener que instalarse el [CLI de NestJS](https://docs.nestjs.com/cli/overview) de forma global, ni tener problemas con las versiones, viene incluido como `devDependency` en el proyecto.
+
+Puede ejecutarse cualquiera de los comandos del CLI anteponiendo `npm run nest`:
+
+```shell
+# Crea un recurso
+npm run nest g resource
+
+# Crea un interceptor
+npm run nest g interceptor
+```
+
+Recomendamos consultar la [documentación oficial](https://docs.nestjs.com/cli/usages#cli-command-reference) para ver los comandos disponibles.
+
 ### Base de datos
 
 ```shell
