@@ -15,6 +15,7 @@ export class CreateContactosTable1670545537435 implements MigrationInterface {
           {
             name: 'nombre',
             type: 'varchar',
+            length: '100',
           },
           {
             name: 'edad',
