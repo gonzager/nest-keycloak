@@ -54,23 +54,13 @@ Breve descripción de qué se puede encontrar en cada uno de los directorios del
 .
 ├── docker              # Configuración de Docker para desarrollo
 ├── src
-│   ├── common
+│   ├── common          # Componentes comunes - guardas, filtros, interceptores, etc
 │   ├── config          # Configuraciones de la API (base de datos, puerto, etc)
 │   ├── contactos
 │   └── database
-└── test
-
-├── bin                 # Punto de entrada del servidor
-├── db
-│   ├── migrations      # Migraciones de la base de datos
-│   └── seeders         # Datos de prueba para la base de datos
-├── docker              # Configuración de Docker para desarrollo
-├── lib
-│   ├── config          # Configuración de la base de datos
-│   ├── controllers     # Acciones de nuestra aplicación
-│   ├── models          # Definición de modelos, atributos, etc
-│   └── routes          # Rutas de la API
-└── test                # Utilidades para escribir tests
+│      ├── migrations   # Migraciones de la base de datos
+│      └── seeders      # Datos de prueba para la base de datos
+└── test                # Tests de integración (e2e)
 ```
 
 ## :woman_technologist: :man_technologist: Comandos útiles para el día a día
