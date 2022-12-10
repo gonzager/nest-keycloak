@@ -9,7 +9,6 @@ import databaseConfig from '../config/database.config';
       inject: [databaseConfig.KEY],
       useFactory(dbConfig: ConfigType<typeof databaseConfig>) {
         return {
-          synchronize: true,
           autoLoadEntities: true,
           ...dbConfig,
         };
