@@ -10,7 +10,10 @@ import {
 import { ContactosService } from './contactos.service';
 import { CreateContactoDto } from './dto/create-contacto.dto';
 import { UpdateContactoDto } from './dto/update-contacto.dto';
+import { Contacto } from './entities/contacto.entity';
+import { ApiTags, ApiResponse } from '@nestjs/swagger';
 
+@ApiTags('contactos')
 @Controller('contactos')
 export class ContactosController {
   constructor(private readonly contactosService: ContactosService) {}
@@ -21,12 +24,24 @@ export class ContactosController {
   }
 
   @Get()
+  @ApiResponse({
+    status: 200,
+    type: [Contacto],
+  })
   findAll() {
     return this.contactosService.findAll();
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
+  @ApiResponse({
+    status: 200,
+    type: Contacto,
+  })
+  @ApiResponse({
+    status: 404,
+    description: 'Contacto no encontrado',
+  })
+  findOne(@Param('id') id: string): Promise<Contacto> {
     return this.contactosService.findOne(+id);
   }
 
