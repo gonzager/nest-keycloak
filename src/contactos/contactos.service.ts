@@ -21,7 +21,7 @@ export class ContactosService {
   }
 
   findOne(id: number) {
-    return this.repository.findOneBy({ id });
+    return this.repository.findOneByOrFail({ id });
   }
 
   update(id: number, updateContactoDto: UpdateContactoDto) {
