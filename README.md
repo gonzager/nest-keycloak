@@ -1,5 +1,7 @@
 # Repositorio semilla: API TypeScript + NestJS + TypeORM :seedling:
 
+> :information_source: Este proyecto fue creado con el CLI de NestJS mediante el comando `nest new`, y por lo tanto toda la [documentación del sitio oficial](https://docs.nestjs.com/) también puede consultarse para saber más.
+
 ¡Bienvenida/o! En este repositorio encontrarás una plantilla (de las infinitas posibles) para crear una API utilizando NodeJS y TypeScript. Las principales tecnologías que utilizamos son:
 
 - [NodeJS](https://nodejs.org/es/): entorno de ejecución para JavaScript.
@@ -11,6 +13,8 @@
 Para crear un proyecto siguiendo esta plantilla, lo único que tenés que hacer es clickear en el botón que dice `Use this template`. ¡Y no te olvides de cambiarle el nombre en el `package.json`!
 
 ## :point_up: Prerrequisitos - para instalar antes de empezar
+
+> ℹ️ El ejemplo viene preparado para ser ejecutado junto a un frontend, que puede crearse desde [este repositorio](https://github.com/surprograma/semilla-react-rtk-mui).
 
 Vas a necesitar un IDE o al menos un editor de texto que coloree la sintaxis. Recomendamos utilizar [Visual Studio Code](https://code.visualstudio.com/) - que se lleva muy bien con proyectos TypeScript - enriquecido con los siguientes plugins:
 
