@@ -41,7 +41,7 @@ export class ContactosController {
     status: 404,
     description: 'Contacto no encontrado',
   })
-  findOne(@Param('id') id: string): Promise<Contacto> {
+  findOne(@Param('id') id: string) {
     return this.contactosService.findOne(+id);
   }
 
