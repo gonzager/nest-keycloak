@@ -3,7 +3,7 @@ import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import serverConfig from './config/server.config';
-import { EntityNotFoundExceptionFilter } from './common/filter';
+import { EntityNotFoundExceptionFilter } from './common/filters/entity-not-found.filter';
 
 function initializeSwagger(app: INestApplication) {
   const config = new DocumentBuilder()
