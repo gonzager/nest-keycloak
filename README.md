@@ -125,3 +125,7 @@ npm run migration:revert
 # Muestra cuáles migraciones fueron ejecutadas y cuáles no.
 npm run migration:show
 ```
+
+## :rocket: Despliegue
+
+El proyecto viene preparado para ser desplegado en [Railway](https://railway.app/). Solo es necesario que crees tu aplicación y un servicio de PostgreSQL asociado a ella.
