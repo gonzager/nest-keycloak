@@ -10,7 +10,7 @@ export interface ServerConfig {
 export default registerAs(
   'server',
   (): ServerConfig => ({
-    port: parseInt(process.env.SERVER_PORT, 10) || 4000,
+    port: parseInt(process.env.PORT, 10) || 4000,
     environment: (process.env.NODE_ENV as Env) ?? 'development',
   }),
 );
