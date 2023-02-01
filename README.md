@@ -125,6 +125,11 @@ npm run migration:revert
 # Muestra cuáles migraciones fueron ejecutadas y cuáles no.
 npm run migration:show
 ```
+## :bookmark_tabs: OpenAPI (Swagger)
+
+Se incluye un módulo que levanta automáticamente una instancia de [Swagger](https://swagger.io/) en la ruta `/api`, por defecto disponible en http://localhost:4000/api, que sirve tanto para documentar la API como para hacer pruebas rápidas.
+
+Para conocer más sobre la forma de documentar los endpoints, ver la [documentación oficial de NestJS](https://docs.nestjs.com/openapi/introduction).
 
 ## :rocket: Despliegue
 
