@@ -12,6 +12,7 @@ import { CreateContactoDto } from './dto/create-contacto.dto';
 import { UpdateContactoDto } from './dto/update-contacto.dto';
 import { Contacto } from './entities/contacto.entity';
 import { ApiTags, ApiResponse } from '@nestjs/swagger';
+import { AuthenticatedUser, Unprotected } from 'nest-keycloak-connect';
 
 @ApiTags('contactos')
 @Controller('contactos')
@@ -41,7 +42,8 @@ export class ContactosController {
     status: 404,
     description: 'Contacto no encontrado',
   })
-  findOne(@Param('id') id: string) {
+  findOne(@Param('id') id: string, @AuthenticatedUser() user: any) {
+    console.log(user.preferred_username);
     return this.contactosService.findOne(+id);
   }
 

@@ -1,4 +1,4 @@
-# Repositorio semilla: API TypeScript + NestJS + TypeORM :seedling:
+# API TypeScript + NestJS + TypeORM + Keycloak :seedling:
 
 > :information_source: Este proyecto fue creado con el CLI de NestJS mediante el comando `nest new`, y por lo tanto toda la [documentación del sitio oficial](https://docs.nestjs.com/) también puede consultarse para saber más.
 
@@ -10,11 +10,7 @@
 - [PostgreSQL](https://www.postgresql.org/): base de datos SQL.
 - [Jest](https://jestjs.io/): framework para escribir tests.
 
-Para crear un proyecto siguiendo esta plantilla, lo único que tenés que hacer es clickear en el botón que dice `Use this template`. ¡Y no te olvides de cambiarle el nombre en el `package.json`!
-
 ## :point_up: Prerrequisitos - para instalar antes de empezar
-
-> ℹ️ El ejemplo viene preparado para ser ejecutado junto a un frontend, que puede crearse desde [este repositorio](https://github.com/surprograma/semilla-react-rtk-mui).
 
 Vas a necesitar un IDE o al menos un editor de texto que coloree la sintaxis. Recomendamos utilizar [Visual Studio Code](https://code.visualstudio.com/) - que se lleva muy bien con proyectos TypeScript - enriquecido con los siguientes plugins:
 
@@ -48,6 +44,45 @@ De manera opcional, también podés cargar unos datos de prueba, llamados _seede
 ```shell
 # (Opcional) Carga los datos de prueba en la base de desarrollo.
 npm run db:seed
+```
+
+## 🔑 Keycloak local
+
+En el `docker-compose` viene incluida la configuración para levantar un servidor de Keycloak local con todo lo necesario para ejecutar tanto este proyecto como el frontend.
+
+Lo único que hay que hacer para que funcione correctamente es crear un archivo `.env` con el siguiente contenido:
+
+```shell
+KEYCLOAK_CLIENT_SECRET=HHZE4G98EMAlNMD3UrMBBjPJS3DLfhPc
+```
+
+Vienen además dos usuarios, uno para la consola de administrador (accesible desde http://localhost:8080) y otro para usar en la aplicación:
+
+👨 **Usuario para la aplicación:** usuario@flux.com.ar // 1qaz!QAZ
+
+👮 **Usuario para la consola de admin:** admin // admin1234
+
+🚀 el real configurado dentro de keycloak se llama **fluxit** y el cliente se llama **api-flux-nest**
+
+Se deja habilitado el flujo grand_type=**password** para que puedan solicitar facilmente un token para pegarle a la api.
+
+Para pedir un token ejecutar el siguiente curl
+
+```
+curl --location 'http://localhost:8080/realms/fluxit/protocol/openid-connect/token' \
+--header 'Content-Type: application/x-www-form-urlencoded' \
+--data-urlencode 'grant_type=password' \
+--data-urlencode 'username=usuario@flux.com.ar' \
+--data-urlencode 'password=1qaz!QAZ' \
+--data-urlencode 'client_id=api-flux-nest' \
+--data-urlencode 'client_secret=HHZE4G98EMAlNMD3UrMBBjPJS3DLfhPc'
+```
+
+Finalmente para llamara a la api hay que pasarle el token obtenido previamente.
+
+```
+curl --location --globoff 'http://localhost:4000/contactos' \
+--header 'Authorization: Bearer {token obtenido}'
 ```
 
 ## :file_folder: Estructura de directorios
@@ -125,12 +160,9 @@ npm run migration:revert
 # Muestra cuáles migraciones fueron ejecutadas y cuáles no.
 npm run migration:show
 ```
+
 ## :bookmark_tabs: OpenAPI (Swagger)
 
 Se incluye un módulo que levanta automáticamente una instancia de [Swagger](https://swagger.io/) en la ruta `/api`, por defecto disponible en http://localhost:4000/api, que sirve tanto para documentar la API como para hacer pruebas rápidas.
 
 Para conocer más sobre la forma de documentar los endpoints, ver la [documentación oficial de NestJS](https://docs.nestjs.com/openapi/introduction).
-
-## :rocket: Despliegue
-
-El proyecto viene preparado para ser desplegado en [Railway](https://railway.app/). Solo es necesario que crees tu aplicación y un servicio de PostgreSQL asociado a ella.
